@@ -1,0 +1,7 @@
+This
+    file
+        has
+        four
+        spaces
+of
+indentation

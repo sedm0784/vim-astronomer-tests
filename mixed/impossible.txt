@@ -1,0 +1,26 @@
+This
+{
+	file
+	should
+	{
+		have
+    a
+		width
+		of
+	}
+	of
+	two
+	{
+		because
+		the
+		tabs
+    mask
+		the
+		"real"
+	}
+	indentation
+}
+
+Without syntax awareness, though, there's no way really to be certain
+of the "correct" values.
+(So it's not in the test cases.)

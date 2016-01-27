@@ -1,0 +1,134 @@
+" Unit tests for the anonymization carried out by the :Astronomize command
+
+Given (1 Test space indentation):
+  some
+    space
+      indented
+
+  code
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+    x
+      x
+
+  x
+
+Given (2 Test tab indentation):
+  some
+  	tab
+  		indented
+
+  code
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+  	x
+  		x
+
+  x
+
+Given (3 Test blank lines):
+  blank
+
+  line
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+
+  x
+
+Given (4 Lines with only spaces):
+  space
+    
+      
+  line
+
+Execute (Astronomize):
+  call astronomer#anonomize() 
+
+Expect:
+  x
+    
+      
+  x
+
+Given (5 Lines with only tabs):
+  tab
+  	
+  		
+  line
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+  	
+  		
+  x
+
+Given (6 Lines with spaces for alignment):
+  tab
+  	indented
+  	  with
+  	  spaces
+  	  for
+  	  alignment
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+  	x
+  	  x
+  	  x
+  	  x
+  	  x
+
+Given (7 Mixed indentation):
+  some
+  	  	  mixed
+    	  indentation
+  including
+  	  
+    	
+  			    		  	 	
+  whitespace-only
+    			    		     	 	  lines
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+  	  	  x
+    	  x
+  x
+  	  
+    	
+  			    		  	 	
+  x
+    			    		     	 	  x
+
+Given (8 Lines with white space):
+  This line
+    and this line
+  	and this line, all have whitespace
+
+Execute (Astronomize):
+  call astronomer#anonomize()
+
+Expect:
+  x
+    x
+  	x

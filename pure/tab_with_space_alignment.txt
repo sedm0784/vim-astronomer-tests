@@ -1,0 +1,9 @@
+This
+	file
+	is
+	tab
+		indented
+		   with
+		   spaces
+		   for
+		alignment

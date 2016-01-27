@@ -1,0 +1,32 @@
+" Unit tests for the debug function
+
+Given (1 Test space indentation):
+  some
+    space
+
+      indented
+
+  code
+    with
+          various
+  changes
+  	and tab indented lines
+
+  and blank lines
+     
+  and white-space only
+  		
+  lines
+
+Execute (Astronomize):
+  call astronomer#reduce_to_changes()
+
+Expect:
+    2 (2) space
+      4 (2) indented
+  6 (4) code
+    7 (2) with
+          8 (6) various
+  9 (8) changes
+
+

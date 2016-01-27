@@ -1,0 +1,7 @@
+This
+ 
+    file should be indented four spaces
+ 
+		as blank lines
+ 
+		should be ignored

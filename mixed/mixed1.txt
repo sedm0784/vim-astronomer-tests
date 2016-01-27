@@ -1,0 +1,14 @@
+Mixed 1
+  This
+  file
+  is
+  mostly
+    indented
+    two
+    spaces
+      but
+		this line has tabs
+  for
+no
+reason
+

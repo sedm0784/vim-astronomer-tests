@@ -1,0 +1,209 @@
+" Tests for constructed test cases
+
+Before:
+  set shiftwidth=8
+  set tabstop=8
+
+Execute (1. Load tab-indented file):
+  set list
+  edit pure/tabs.txt
+Then (Check list unset):
+  AssertEqual 0, &list
+
+Execute (2. Load tab-indented file):
+  set expandtab
+  edit pure/tabs.txt
+Then (Check expandtab unset):
+  AssertEqual 0, &expandtab
+
+Execute (3. Load tab-indented file):
+  edit pure/tabs.txt
+Then (Check shiftwidth untouched):
+  AssertEqual 8, &shiftwidth
+
+Execute (4. Load tab-indented file):
+  edit pure/tabs.txt
+Then (Check tabstop untouched):
+  AssertEqual 8, &tabstop
+
+Execute (5. Load 2-space indented file):
+  set list
+  edit pure/two_spaces.txt
+Then (Check list unset):
+  AssertEqual 0, &list
+
+Execute (6. Load 2-space indented file):
+  set noexpandtab
+  edit pure/two_spaces.txt
+Then (Check expandtab set):
+  AssertEqual 1, &expandtab
+
+Execute (7. Load 2-space indented file):
+  edit pure/two_spaces.txt
+Then (Check shiftwidth set):
+  AssertEqual 2, &shiftwidth
+
+Execute (8. Load 2-space indented file):
+  edit pure/two_spaces.txt
+Then (Check tabstop set):
+  AssertEqual 2, &tabstop
+
+Execute (9. Load 4-space indented file):
+  set list
+  edit pure/four_spaces.txt
+Then (Check list unset):
+  AssertEqual 0, &list
+
+Execute (10. Load 4-space indented file):
+  set noexpandtab
+  edit pure/four_spaces.txt
+Then (Check expandtab set):
+  AssertEqual 1, &expandtab
+
+Execute (11. Load 4-space indented file):
+  edit pure/four_spaces.txt
+Then (Check shiftwidth set):
+  AssertEqual 4, &shiftwidth
+
+Execute (12. Load 4-space indented file):
+  edit pure/four_spaces.txt
+Then (Check tabstop set):
+  AssertEqual 4, &tabstop
+
+Execute (13. Load mixed-indent file mostly two-spaced):
+  set nolist
+  edit mixed/mixed1.txt
+Then (Check list set):
+  AssertEqual 1, &list
+
+Execute (14. Load mixed-indent file mostly two-spaced):
+  set noexpandtab
+  edit mixed/mixed1.txt
+Then (Check expandtab set):
+  AssertEqual 1, &expandtab
+
+Execute (15. Load mixed-indent file mostly two-spaced):
+  edit mixed/mixed1.txt
+Then (Check shiftwidth set):
+  AssertEqual 2, &shiftwidth
+
+Execute (16. Load mixed-indent file mostly two-spaced):
+  edit mixed/mixed1.txt
+Then (Check tabstop set):
+  AssertEqual 2, &tabstop
+
+Execute (17. Load mixed-indent file mostly tab-indented):
+  set nolist
+  edit mixed/mixed2.txt
+Then (Check list set):
+  AssertEqual 1, &list
+
+Execute (18. Load mixed-indent file mostly tab-indented):
+  set expandtab
+  edit mixed/mixed2.txt
+Then (Check expandtab unset):
+  AssertEqual 0, &expandtab
+
+Execute (19. Load mixed-indent file mostly tab-indented):
+  edit mixed/mixed2.txt
+Then (Check shiftwidth set):
+  AssertEqual 2, &shiftwidth
+
+Execute (20. Load mixed-indent file mostly tab-indented):
+  edit mixed/mixed2.txt
+Then (Check tabstop set):
+  AssertEqual 2, &tabstop
+
+Execute (21. Load mixed-indent file half-and-half):
+  set nolist
+  let g:astronomer_reallydebug=1
+  edit mixed/mixed3.txt
+Then (Check list):
+  AssertEqual 1, &list
+
+" Why does this test case fail?
+" It's definitely not astronomer doing it. (Confirmed with Vim's debug. 
+" expandtab is set before s:star_gaze() is called.)
+Execute (22. FIXME: Load mixed-indent file half-and-half):
+  set noexpandtab
+  edit mixed/mixed3.txt
+Then (Check expandtab untouched):
+  AssertEqual 0, &expandtab
+
+Execute (23. Load mixed-indent file half-and-half):
+  set expandtab
+  edit mixed/mixed3.txt
+Then (Check expandtab untouched):
+  AssertEqual 1, &expandtab
+
+Execute (24. Load mixed-indent file half-and-half):
+  edit mixed/mixed3.txt
+Then (Check shiftwidth set):
+  AssertEqual 2, &shiftwidth
+
+Execute (25. Load mixed-indent file half-and-half):
+  edit mixed/mixed3.txt
+Then (Check tabstop set):
+  AssertEqual 2, &tabstop
+
+Execute (26. Load 4-space indented file):
+  edit pure/four_spaces2.txt
+Then (Check shiftwidth and tabstop):
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (27. Load 4-space indented file):
+  edit pure/four_spaces3.txt
+Then (Check shiftwidth and tabstop):
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (28. Load 2-space indented file):
+  edit pure/two_spaces2.txt
+Then (Check shiftwidth and tabstop):
+  AssertEqual 2, &shiftwidth
+  AssertEqual 2, &tabstop
+
+Execute (29. Load tab-indented + space alignment):
+  set list
+  set expandtab
+  edit pure/tab_with_space_alignment.txt
+Then (Check settings):
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+  AssertEqual 0, &list
+  AssertEqual 0, &expandtab
+
+Execute (30. Load file with blank lines):
+  edit pure/blank_lines1.txt
+Then (Check settings):
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (31. Load file with blank lines):
+  edit pure/blank_lines2.txt
+Then (Check settings):
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (32. Load file with many space-only lines):
+  edit mixed/mixed4.txt
+Then (Check expandtab):
+  AssertEqual 0, &expandtab
+
+Execute (33. Load file with many tab-only lines):
+  edit mixed/mixed5.txt
+Then (Check expandtab):
+  AssertEqual 1, &expandtab
+
+Execute (34. Load eight-space indented file):
+  set list
+  set noexpandtab
+  set shiftwidth=2
+  set tabstop=2
+  edit pure/eight_spaces.txt
+Then (Check settings):
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+  AssertEqual 0, &list
+  AssertEqual 1, &expandtab

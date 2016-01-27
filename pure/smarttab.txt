@@ -1,0 +1,7 @@
+This file
+    has tabstop set to 8
+	but uses 'smarttab'
+	to indent it
+	    by four on-screen
+	character widths
+	    throughout

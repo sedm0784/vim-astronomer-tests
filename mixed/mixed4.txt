@@ -1,0 +1,18 @@
+This file
+	has
+	seven
+	lines
+	that
+	are
+	tab
+	indented
+
+  and
+  five
+  that
+  are indented with spaces
+  but four more that contain just spaces
+  
+      
+    
+  

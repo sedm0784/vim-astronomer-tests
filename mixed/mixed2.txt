@@ -1,0 +1,16 @@
+Mixed 2
+This
+	file
+	is
+	mostly
+		tab
+		indented
+	but
+  this line is space indented
+    and so is this one
+      and also this one
+		now
+		back
+	to
+tabs
+

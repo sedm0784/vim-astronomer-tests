@@ -1,0 +1,20 @@
+This file
+	has
+	five
+	tab
+	indented
+	lines
+
+  and
+  seven
+  that
+  are
+  indented
+  with
+  spaces
+
+with four more that contain just tabs
+	
+			
+		
+	

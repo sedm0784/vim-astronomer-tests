@@ -1,0 +1,12 @@
+this
+is
+    a
+    test
+
+        Of multiple lines
+
+        Of indent
+
+        With blank lines
+
+And a larger outdent

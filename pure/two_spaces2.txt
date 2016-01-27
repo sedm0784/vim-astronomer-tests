@@ -1,0 +1,21 @@
+This
+  file
+    is
+    definitely
+    indented
+    two
+    spaces
+    but
+    will
+    it
+    return
+    the
+    right
+    value
+    or
+    will
+    it
+    pick
+    four
+    space
+    indentation?

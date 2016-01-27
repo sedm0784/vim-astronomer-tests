@@ -1,0 +1,70 @@
+" Test cases for real (astronomized) files
+
+Before:
+  set shiftwidth=8
+  set tabstop=8
+
+Execute (1. 4-space indented):
+  set list
+  set noexpandtab
+  edit astronomized/test01.txt
+Then (Check settings):
+  AssertEqual 0, &list
+  AssertEqual 1, &expandtab
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (2. 4-space indented):
+  set list
+  set noexpandtab
+  edit astronomized/test02.txt
+Then (Check settings):
+  AssertEqual 0, &list
+  AssertEqual 1, &expandtab
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (3. File that's a mess, but mostly tab-indented):
+  set nolist
+  set expandtab
+  edit astronomized/test03.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+
+" This file had a comment header indented with spaces
+Execute (4. Short file with almost all tab indentation):
+  set nolist
+  set expandtab
+  edit astronomized/test04.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+
+" This file had a comment header indented with spaces
+Execute (5. File with almost all tab indentation):
+  set nolist
+  set expandtab
+  edit astronomized/test05.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+
+" This file was a mess. The correct width setting is actually probably 1. There 
+" are over 100 lines that are indented using a width of 1, and only 50ish 
+" indented using an indentation of 4.
+Execute (6. Very inconsistent indentation):
+  set nolist
+  set noexpandtab
+  edit astronomized/test06.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 1, &expandtab
+  AssertEqual 1, &shiftwidth
+  AssertEqual 1, &tabstop
