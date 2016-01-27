@@ -207,3 +207,74 @@ Then (Check settings):
   AssertEqual 8, &tabstop
   AssertEqual 0, &list
   AssertEqual 1, &expandtab
+
+Execute (35. Load smarttab-indented file):
+  set list
+  edit pure/smarttab.txt
+Then (Check list unset):
+  AssertEqual 0, &list
+
+Execute (36. Load smarttab-indented file):
+  set expandtab
+  edit pure/smarttab.txt
+Then (Check expandtab unset):
+  AssertEqual 0, &expandtab
+
+Execute (37. Load smarttab-indented file):
+  edit pure/smarttab.txt
+Then (Check shiftwidth set to 4):
+  AssertEqual 4, &shiftwidth
+
+Execute (38. Load smarttab-indented file):
+  set tabstop=2
+  edit pure/smarttab.txt
+Then (Check tabstop set to 8):
+  AssertEqual 8, &tabstop
+
+Execute (39. Load smarttab-indented file):
+  set list
+  edit pure/smarttab2.txt
+Then (Check list unset):
+  AssertEqual 0, &list
+
+Execute (40. Load smarttab-indented file):
+  set expandtab
+  edit pure/smarttab2.txt
+Then (Check expandtab unset):
+  AssertEqual 0, &expandtab
+
+Execute (41. Load smarttab-indented file):
+  edit pure/smarttab2.txt
+Then (Check shiftwidth set to 4):
+  AssertEqual 4, &shiftwidth
+
+Execute (42. Load smarttab-indented file):
+  set tabstop=2
+  edit pure/smarttab2.txt
+Then (Check tabstop set to 8):
+  AssertEqual 8, &tabstop
+
+Execute (43. Load smarttab-indented file):
+  set list
+  set expandtab
+  set shiftwidth=2
+  set tabstop=2
+  edit pure/smarttab3.txt
+Then (Check settings):
+  AssertEqual 4, &shiftwidth
+  AssertEqual 8, &tabstop
+  AssertEqual 0, &list
+  AssertEqual 0, &expandtab
+
+Execute (44. Load smarttab-indented file):
+  set list
+  set expandtab
+  set shiftwidth=4
+  set tabstop=4
+  edit pure/smarttab4.txt
+Then (Check settings):
+  AssertEqual 2, &shiftwidth
+  AssertEqual 8, &tabstop
+  AssertEqual 0, &list
+  AssertEqual 0, &expandtab
+

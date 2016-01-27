@@ -68,3 +68,24 @@ Then (Check settings):
   AssertEqual 1, &expandtab
   AssertEqual 1, &shiftwidth
   AssertEqual 1, &tabstop
+
+Execute (7. File that uses smarttab):
+  set list
+  set expandtab
+  edit astronomized/test07.txt
+Then (Check settings):
+  AssertEqual 0, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 4, &shiftwidth
+  AssertEqual 8, &tabstop
+
+Execute (8. Another file that uses smarttab):
+  set list
+  set expandtab
+  edit astronomized/test08.txt
+Then (Check settings):
+  AssertEqual 0, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 2, &shiftwidth
+  AssertEqual 8, &tabstop
+
