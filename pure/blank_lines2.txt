@@ -2,6 +2,6 @@ This
  
     file should be indented four spaces
  
-		as blank lines
+    as blank lines
  
-		should be ignored
+    should be ignored

@@ -3,6 +3,8 @@
 Before:
   set shiftwidth=8
   set tabstop=8
+After:
+  unlet! g:astronomer_widths
 
 Execute (1. Load tab-indented file: pure/tabs.txt):
   set list
@@ -116,7 +118,6 @@ Then (Check tabstop set):
 
 Execute (21. Load mixed-indent file half-and-half: mixed/mixed3.txt):
   set nolist
-  let g:astronomer_reallydebug=1
   edit mixed/mixed3.txt
 Then (Check list):
   AssertEqual 1, &list
@@ -277,4 +278,3 @@ Then (Check settings):
   AssertEqual 8, &tabstop
   AssertEqual 0, &list
   AssertEqual 0, &expandtab
-
