@@ -89,3 +89,22 @@ Then (Check settings):
   AssertEqual 2, &shiftwidth
   AssertEqual 8, &tabstop
 
+Execute (9. A file that is tab-indented, but contains a handful of shift-indented lines: astronomized/test09.txt):
+  set nolist
+  set expandtab
+  edit astronomized/test09.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
+
+Execute (10. A file with very mixed line-endings: more tabs than spaces: astronomized/test10.txt):
+  set nolist
+  set expandtab
+  edit astronomized/test10.txt
+Then (Check settings):
+  AssertEqual 1, &list
+  AssertEqual 0, &expandtab
+  AssertEqual 2, &shiftwidth
+  AssertEqual 2, &tabstop
