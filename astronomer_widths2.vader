@@ -1,0 +1,14 @@
+" Test for g:astronomer_widths
+
+" Had some problems with getting the global variable to work properly with
+" multiple test cases in the same file, so testing in separate files.
+
+Execute (Load 3-space indented file: pure/three_spaces.txt):
+  set shiftwidth=8
+  set tabstop=8
+  edit pure/three_spaces.txt
+Then (Check default g:astronomer_widths effective):
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+
+

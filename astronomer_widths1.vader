@@ -1,0 +1,14 @@
+" Test for g:astronomer_widths
+
+" Had some problems with getting the global variable to work properly with
+" multiple test cases in the same file, so testing in separate files.
+
+Execute (Load 4-space indented file: pure/four_spaces.txt):
+  set shiftwidth=8
+  set tabstop=8
+  let g:astronomer_widths = [2]
+  edit pure/four_spaces.txt
+Then (Check g:astronomer_widths effective at preventing standard indent):
+  AssertEqual 8, &shiftwidth
+  AssertEqual 8, &tabstop
+

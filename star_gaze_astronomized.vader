@@ -56,9 +56,11 @@ Then (Check settings):
   AssertEqual 8, &shiftwidth
   AssertEqual 8, &tabstop
 
-" This file was a mess. The correct width setting is actually probably 1. There 
-" are over 100 lines that are indented using a width of 1, and only 50ish 
-" indented using an indentation of 4.
+" This file was a mess. The correct width setting is actually probably 1. There
+" are over 100 lines that are indented using a width of 1, and only 50ish
+" indented using an indentation of 4. However, 1 is not allowed by the default
+" astronomer_widths setting. (We test that 1 is selected when it is present in
+" g:astronomer_widths in the astronomer_widths4.vader test case file.)
 Execute (6. Very inconsistent indentation: astronomized/test06.txt):
   set nolist
   set noexpandtab
@@ -66,8 +68,8 @@ Execute (6. Very inconsistent indentation: astronomized/test06.txt):
 Then (Check settings):
   AssertEqual 1, &list
   AssertEqual 1, &expandtab
-  AssertEqual 1, &shiftwidth
-  AssertEqual 1, &tabstop
+  AssertEqual 4, &shiftwidth
+  AssertEqual 4, &tabstop
 
 Execute (7. File that uses smarttab: astronomized/test07.txt):
   set list

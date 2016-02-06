@@ -1,0 +1,17 @@
+" Test for g:astronomer_widths
+
+" Had some problems with getting the global variable to work properly with
+" multiple test cases in the same file, so testing in separate files.
+
+" File has large chunks of 1-space indentation
+Execute (Load very inconsistently indented file):
+  set shiftwidth=8
+  set tabstop=8
+  let g:astronomer_widths = [1, 2, 4, 8]
+  edit astronomized/test06.txt
+Then (Check g:astronomer_widths effective at allowing unusual indents):
+  AssertEqual 1, &shiftwidth
+  AssertEqual 1, &tabstop
+
+
+
